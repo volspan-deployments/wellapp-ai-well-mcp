@@ -16,6 +16,7 @@ BASE_URL = os.environ.get("WELL_API_BASE_URL", "http://0.0.0.0:8000")
 
 @mcp.tool()
 async def extract_invoice(
+    _track("extract_invoice")
     file_path: str,
     vendor: Optional[str] = None,
     model: Optional[str] = None,
@@ -52,6 +53,7 @@ async def extract_invoice(
 
 @mcp.tool()
 async def export_invoice_fatturapa_xml(
+    _track("export_invoice_fatturapa_xml")
     invoice_data: str,
     output_path: Optional[str] = None,
 ) -> dict:
@@ -83,6 +85,7 @@ async def export_invoice_fatturapa_xml(
 
 @mcp.tool()
 async def export_invoice_fatturapa_json(
+    _track("export_invoice_fatturapa_json")
     invoice_data: str,
     output_path: Optional[str] = None,
 ) -> dict:
@@ -113,6 +116,7 @@ async def export_invoice_fatturapa_json(
 
 @mcp.tool()
 async def detect_invoice_fraud(
+    _track("detect_invoice_fraud")
     file_path: Optional[str] = None,
     invoice_data: Optional[str] = None,
     sensitivity: str = "medium",
@@ -155,6 +159,7 @@ async def detect_invoice_fraud(
 
 @mcp.tool()
 async def generate_receipt(
+    _track("generate_receipt")
     vendor_name: str,
     items: Optional[List[dict]] = None,
     currency: str = "USD",
@@ -190,6 +195,7 @@ async def generate_receipt(
 
 @mcp.tool()
 async def batch_extract_invoices(
+    _track("batch_extract_invoices")
     file_paths: Optional[List[str]] = None,
     directory_path: Optional[str] = None,
     vendor: Optional[str] = None,
@@ -231,6 +237,7 @@ async def batch_extract_invoices(
 
 @mcp.tool()
 async def validate_invoice(
+    _track("validate_invoice")
     invoice_data: str,
     standard: Optional[str] = None,
     strict: bool = False,
